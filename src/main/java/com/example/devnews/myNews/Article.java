@@ -1,9 +1,17 @@
 package com.example.devnews.myNews;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
+
+@Entity
 public class Article {
 
+    @Id
     private Long id;
     private String title;
+    //TEXT can hold longer string
+    @Column(columnDefinition = "TEXT")
     private String body;
     private String authorName;
 
