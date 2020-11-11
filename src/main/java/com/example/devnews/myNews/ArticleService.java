@@ -1,6 +1,6 @@
 package com.example.devnews.myNews;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -12,45 +12,27 @@ import java.util.stream.Collectors;
 
 @Service
 public class ArticleService {
+    @Autowired
+    private ArticleRepository repository;
     private static Long idCounter = 1L;
-    private static List<Article> articleList = new ArrayList<>();
-
-    static{
-        add(new Article( null, "10 reasons to learn Spring", "In this article I'll be listing 10 reasons why you should learn spring and use it in your next project...", "John Smith" ));
-        add(new Article( null, "Winters in Stockholm", "In this article I'll be telling about the winters in Stockholm..", "Chris Bay" ));
-    }
 
     //Get a list of all the articles
-
-
-    public static List<Article> getAll() {
-        return articleList;
+    public List<Article> getAll() {
+        return repository.findAll();
     }
 
     //Get a specific article by id
-
     public Optional<Article> getById(Long id) {
-        return articleList.stream()
-                .filter(a -> a.getId().equals(id))
-                .findFirst();
+        return repository.findById(id);
     }
-
 
     public Article create(Article newArticle) {
-        add(newArticle);
-        return newArticle;
-    }
-
-    static private boolean add(Article newArticle){
-        //generate and set the id
         newArticle.setId(idCounter);
         idCounter++;
-        return articleList.add(newArticle);
+        return repository.save(newArticle);
     }
 
     public void delete(Long id){
-        articleList= articleList.stream()
-                .filter(t -> !t.getId().equals(id))
-                .collect(Collectors.toList());
+        repository.deleteById(id);
     }
 }
