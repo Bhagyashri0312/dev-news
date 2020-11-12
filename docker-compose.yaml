@@ -4,8 +4,8 @@ services:
     image: postgres:11-alpine
     environment:
       - POSTGRES_DB=dev-news
-      - POSTGRES_USER=dev-news_user
-      - POSTGRES_PASSWORD=dev-news_pass
+      - POSTGRES_USER=dev_news_user
+      - POSTGRES_PASSWORD=dev_news_pass
     ports:
       - "5433:5432"
     volumes:

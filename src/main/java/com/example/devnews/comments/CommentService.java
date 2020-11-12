@@ -1,4 +1,4 @@
-package com.example.devnews.myNews;
+package com.example.devnews.comments;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,33 +11,30 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class ArticleService {
+public class CommentService {
     @Autowired
-    private ArticleRepository repository;
+    private CommentRepository repository;
 
     //Get a list of all the articles
-    public List<Article> getAll() {
+    public List<Comment> getAll() {
         return repository.findAll();
     }
 
     //Get a specific article by id
-    public Optional<Article> getById(Long id) {
+    public Optional<Comment> getById(Long id) {
         return repository.findById(id);
     }
 
-    public Article create(Article newArticle) {
-        return repository.save(newArticle);
+    public Comment create(Comment newComment) {
+        return repository.save(newComment);
     }
 
-    public Article update(Article updatedArticle) {
-        return repository.save(updatedArticle);
+    public Comment update(Comment updatedComment) {
+        return repository.save(updatedComment);
     }
 
     public void delete(Long id){
         repository.deleteById(id);
     }
-
-    public Article update(Article updatedArticle) {
-        return repository.save(updatedArticle);
-    }
 }
+
