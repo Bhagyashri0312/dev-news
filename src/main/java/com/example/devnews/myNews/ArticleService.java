@@ -37,7 +37,4 @@ public class ArticleService {
         repository.deleteById(id);
     }
 
-    public Article update(Article updatedArticle) {
-        return repository.save(updatedArticle);
-    }
 }
