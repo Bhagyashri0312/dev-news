@@ -1,27 +1,24 @@
-package com.example.devnews.myNews;
+package com.example.devnews.comments;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
 @Entity
-public class Article {
-
+public class Comment {
     @Id
     private Long id;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String title;
     //TEXT can hold longer string
     @Column(columnDefinition = "TEXT")
     private String body;
     private String authorName;
 
-    public Article() {
+    public Comment() {
     }
 
-    public Article(Long id, String title, String body, String authorName){
+    public Comment(Long id, String title, String body, String authorName){
         this.id= id;
-        this.title=title;
         this.body=body;
         this.authorName=authorName;
     }
@@ -32,14 +29,6 @@ public class Article {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getBody() {
