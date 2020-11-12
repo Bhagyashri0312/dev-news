@@ -36,4 +36,8 @@ public class ArticleService {
     public void delete(Long id){
         repository.deleteById(id);
     }
+
+    public Article update(Article updatedArticle) {
+        return repository.save(updatedArticle);
+    }
 }

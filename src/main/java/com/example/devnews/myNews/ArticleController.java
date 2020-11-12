@@ -36,7 +36,7 @@ import java.util.Optional;
         @PutMapping("")
         public Article update(@RequestBody Article updatedArticle){
             return articleService.update(updatedArticle);
-        }
+        
         //Delete a article
         @DeleteMapping("/{id}")
         public void delete(@PathVariable Long id){
