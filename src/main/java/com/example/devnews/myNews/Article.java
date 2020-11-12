@@ -9,6 +9,7 @@ public class Article {
 
     @Id
     private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String title;
     //TEXT can hold longer string
     @Column(columnDefinition = "TEXT")

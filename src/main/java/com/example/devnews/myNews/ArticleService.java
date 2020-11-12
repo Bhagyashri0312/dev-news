@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 public class ArticleService {
     @Autowired
     private ArticleRepository repository;
-    private static Long idCounter = 1L;
 
     //Get a list of all the articles
     public List<Article> getAll() {
@@ -27,12 +26,14 @@ public class ArticleService {
     }
 
     public Article create(Article newArticle) {
-        newArticle.setId(idCounter);
-        idCounter++;
         return repository.save(newArticle);
     }
 
     public void delete(Long id){
         repository.deleteById(id);
+    }
+
+    public Article update(Article updatedArticle) {
+        return repository.save(updatedArticle);
     }
 }
