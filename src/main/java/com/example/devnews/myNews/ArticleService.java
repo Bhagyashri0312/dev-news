@@ -36,4 +36,9 @@ public class ArticleService {
     public void delete(Long id){
         repository.deleteById(id);
     }
+
+    public List<Article> getAllByTopicId(Long topicId) {
+        return repository.findAllByTopics_Id(topicId);
+    }
+
 }

@@ -1,9 +1,7 @@
 package com.example.devnews.comments;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +14,12 @@ public class CommentController {
 
     //Get a list of all the articles
     @GetMapping("")
-    public List<Comment> getAll() {
-        return commentService.getAll();
+    public List<Comment> getAll(@RequestParam(required = false) Long articleId) {
+        if (articleId == null) {
+            return commentService.getAll();
+        } else {
+            return commentService.getAllByArticleId(articleId );
+        }
     }
 
     //Get a specific article by id
@@ -37,6 +39,7 @@ public class CommentController {
     public Comment update(@RequestBody Comment updatedComment){
         return commentService.update(updatedComment);
     }
+
     //Delete a article
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
