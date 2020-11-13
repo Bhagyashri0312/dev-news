@@ -6,24 +6,31 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/articles")
     public class ArticleController {
-        @Autowired
-        private ArticleService articleService;
+        private final ArticleService articleService;
 
-        //Get a list of all the articles
+    public ArticleController(@Autowired ArticleService articleService) {
+        this.articleService = articleService;
+    }
+
+    //Get a list of all the articles
         @GetMapping("")
-        public List<Article> getAll() {
-            return articleService.getAll();
+        public List<Article> getAll(@RequestParam(required = false) Long topicId) {
+            if (topicId == null) {
+                return articleService.getAll();
+            } else {
+                return articleService.getAllByTopicId(topicId );
+            }
         }
 
         //Get a specific article by id
         @GetMapping("/{id}")
-        public Optional<Article> getById(@PathVariable Long id){
-            return articleService.getById(id);
+        public Article getById(@PathVariable Long id){
+            return articleService.getById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         }
 
         //Create a article
@@ -35,7 +42,8 @@ import java.util.Optional;
         //Update a article
         @PutMapping("")
         public Article update(@RequestBody Article updatedArticle){
-            return articleService.update(updatedArticle);
+            return articleService.update(updatedArticle)
+        }
         
         //Delete a article
         @DeleteMapping("/{id}")

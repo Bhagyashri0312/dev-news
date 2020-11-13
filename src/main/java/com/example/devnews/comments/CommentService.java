@@ -1,5 +1,6 @@
 package com.example.devnews.comments;
 
+import com.example.devnews.myNews.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +36,11 @@ public class CommentService {
 
     public void delete(Long id){
         repository.deleteById(id);
+    }
+
+
+    public List<Comment> getAllByArticleId(Long topicId) {
+        return repository.findAllByArticleId(topicId);
     }
 }
 

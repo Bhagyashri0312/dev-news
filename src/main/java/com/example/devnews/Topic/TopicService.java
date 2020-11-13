@@ -1,5 +1,6 @@
-package com.example.devnews.myNews;
+package com.example.devnews.Topic;
 
+import com.example.devnews.myNews.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,34 +12,34 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class ArticleService {
+public class TopicService {
     @Autowired
-    private ArticleRepository repository;
+    private TopicRepository repository;
 
     //Get a list of all the articles
-    public List<Article> getAll() {
+    public List<Topic> getAll() {
         return repository.findAll();
     }
 
     //Get a specific article by id
-    public Optional<Article> getById(Long id) {
+    public Optional<Topic> getById(Long id) {
         return repository.findById(id);
     }
 
-    public Article create(Article newArticle) {
-        return repository.save(newArticle);
+    public Topic create(Topic newTopic) {
+        return repository.save(newTopic);
     }
 
-    public Article update(Article updatedArticle) {
-        return repository.save(updatedArticle);
+    public Topic update(Topic updatedTopic) {
+        return repository.save(updatedTopic);
     }
 
     public void delete(Long id){
         repository.deleteById(id);
     }
 
-    public List<Article> getAllByTopicId(Long topicId) {
-        return repository.findAllByTopics_Id(topicId);
+    public List<Topic> getAllByArticleId(Long articleId) {
+        return repository.findAllByArticles_Id(articleId);
     }
-
 }
+

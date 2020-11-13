@@ -1,23 +1,33 @@
 package com.example.devnews.myNews;
 
+import com.example.devnews.Topic.Topic;
+import com.example.devnews.comments.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Article {
 
     @Id
-    private Long id;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
+
     //TEXT can hold longer string
     @Column(columnDefinition = "TEXT")
     private String body;
+
     private String authorName;
 
-    public Article() {
-    }
+    @OneToMany
+    private List<Comment> comments;
+
+    @ManyToMany
+    private List<Topic> topics;
+
+    public Article() {}
 
     public Article(Long id, String title, String body, String authorName){
         this.id= id;
@@ -57,4 +67,13 @@ public class Article {
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
     }
+
+    public List<Topic> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
+    }
+
 }
