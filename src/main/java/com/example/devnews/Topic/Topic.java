@@ -1,8 +1,6 @@
 package com.example.devnews.Topic;
 
-import com.example.devnews.comments.Comment;
-import com.example.devnews.myNews.Article;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.devnews.Article.Article;
 
 import javax.persistence.*;
 import java.util.List;
