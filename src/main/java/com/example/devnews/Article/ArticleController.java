@@ -42,7 +42,7 @@ import java.util.List;
         //Update a article
         @PutMapping("")
         public Article update(@RequestBody Article updatedArticle){
-            return articleService.update(updatedArticle)
+            return articleService.update(updatedArticle);
         }
         
         //Delete a article
