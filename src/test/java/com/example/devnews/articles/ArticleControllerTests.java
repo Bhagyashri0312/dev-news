@@ -1,8 +1,8 @@
 package com.example.devnews.articles;
 
-import com.example.devnews.myNews.Article;
-import com.example.devnews.myNews.ArticleController;
-import com.example.devnews.myNews.ArticleService;
+import com.example.devnews.Article.Article;
+import com.example.devnews.Article.ArticleController;
+import com.example.devnews.Article.ArticleService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

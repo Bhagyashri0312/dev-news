@@ -1,4 +1,4 @@
-package com.example.devnews.myNews;
+package com.example.devnews.Article;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +42,7 @@ import java.util.List;
         //Update a article
         @PutMapping("")
         public Article update(@RequestBody Article updatedArticle){
-            return articleService.update(updatedArticle)
+            return articleService.update(updatedArticle);
         }
         
         //Delete a article

@@ -1,10 +1,7 @@
-package com.example.devnews.comments;
-import com.example.devnews.Topic.Topic;
-import com.example.devnews.myNews.Article;
-import org.springframework.beans.factory.annotation.Autowired;
+package com.example.devnews.Comment;
+import com.example.devnews.Article.Article;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Comment {
